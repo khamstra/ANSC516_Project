@@ -1,0 +1,20 @@
+qiime diversity alpha-rarefaction \
+  --i-table 8w-table.qza \
+  --i-phylogeny rooted-tree_simple.qza \
+  --p-max-depth 20000 \
+  --m-metadata-file metadata.txt \
+  --o-visualization alpha-rarefaction-8w.qzv
+
+qiime diversity alpha-rarefaction \
+  --i-table 1yr-table.qza \
+  --i-phylogeny rooted-tree_simple.qza \
+  --p-max-depth 10000 \
+  --m-metadata-file metadata.txt \
+  --o-visualization alpha-rarefaction-1yr.qzv
+
+qiime diversity alpha-rarefaction \
+  --i-table 2yr-table.qza \
+  --i-phylogeny rooted-tree_simple.qza \
+  --p-max-depth 30000 \
+  --m-metadata-file metadata.txt \
+  --o-visualization alpha-rarefaction-2yr.qzv
