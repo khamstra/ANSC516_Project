@@ -1,0 +1,189 @@
+# 8w
+qiime feature-table filter-samples \
+  --i-table table_simple_220_160.qza \
+  --m-metadata-file metadata.txt \
+  --p-where "[Host_Age]='8w'" \
+  --o-filtered-table 8w-table.qza
+
+qiime diversity core-metrics-phylogenetic \
+--i-phylogeny rooted-tree_simple.qza \
+--i-table 8w-table.qza \
+--p-sampling-depth 9500 \
+--m-metadata-file metadata.txt \
+--output-dir 8w-core-metrics-results-new
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity 8w-core-metrics-results-new/faith_pd_vector.qza \
+  --m-metadata-file metadata.txt \
+  --o-visualization 8w-core-metrics-results-new/faith-pd-group-significance.qzv
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity 8w-core-metrics-results-new/evenness_vector.qza \
+  --m-metadata-file metadata.txt \
+  --o-visualization 8w-core-metrics-results-new/evenness-group-significance.qzv
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity 8w-core-metrics-results-new/shannon_vector.qza \
+  --m-metadata-file metadata.txt \
+  --o-visualization 8w-core-metrics-results-new/shannon-group-significance.qzv
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity 8w-core-metrics-results-new/observed_features_vector.qza \
+  --m-metadata-file metadata.txt \
+  --o-visualization 8w-core-metrics-results-new/observed-features-significance.qzv
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix 8w-core-metrics-results-new/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file metadata.txt \
+  --m-metadata-column calf_diet \
+  --o-visualization 8w-core-metrics-results-new/unweighted-unifrac-calf_diet-significance.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix 8w-core-metrics-results-new/weighted_unifrac_distance_matrix.qza \
+  --m-metadata-file metadata.txt \
+  --m-metadata-column calf_diet \
+  --o-visualization 8w-core-metrics-results-new/weighted-unifrac-calf_diet-significance.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix 8w-core-metrics-results-new/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.txt \
+  --m-metadata-column calf_diet \
+  --o-visualization 8w-core-metrics-results-new/bray-curtis-calf_diet-significance.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix 8w-core-metrics-results-new/jaccard_distance_matrix.qza \
+  --m-metadata-file metadata.txt \
+  --m-metadata-column calf_diet \
+  --o-visualization 8w-core-metrics-results-new/jaccard_diet-significance.qzv \
+  --p-pairwise
+
+scp khamstr@bell.rcac.purdue.edu:/depot/microbiome/data/ANSC516/khamstr/project_data/8w-core-metrics-results/*significance.qzv C:/ANSC516_Project/Diversity_Visualizations/8w
+
+
+
+# 1yr
+qiime feature-table filter-samples \
+  --i-table table_simple_220_160.qza \
+  --m-metadata-file metadata.txt \
+  --p-where "[Host_Age]='1yr'" \
+  --o-filtered-table 1yr-table.qza
+
+qiime diversity core-metrics-phylogenetic \
+--i-phylogeny rooted-tree_simple.qza \
+--i-table 1yr-table.qza \
+--p-sampling-depth 9500 \
+--m-metadata-file metadata.txt \
+--output-dir 1yr-core-metrics-results-new
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity 1yr-core-metrics-results-new/faith_pd_vector.qza \
+  --m-metadata-file metadata.txt \
+  --o-visualization 1yr-core-metrics-results-new/faith-pd-group-significance.qzv
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity 1yr-core-metrics-results-new/evenness_vector.qza \
+  --m-metadata-file metadata.txt \
+  --o-visualization 1yr-core-metrics-results-new/evenness-group-significance.qzv
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity 1yr-core-metrics-results-new/shannon_vector.qza \
+  --m-metadata-file metadata.txt \
+  --o-visualization 1yr-core-metrics-results-new/shannon-group-significance.qzv
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity 1yr-core-metrics-results-new/observed_features_vector.qza \
+  --m-metadata-file metadata.txt \
+  --o-visualization 1yr-core-metrics-results-new/observed-features-significance.qzv
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix 1yr-core-metrics-results-new/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file metadata.txt \
+  --m-metadata-column calf_diet \
+  --o-visualization 1yr-core-metrics-results-new/unweighted-unifrac-calf_diet-significance.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix 1yr-core-metrics-results-new/weighted_unifrac_distance_matrix.qza \
+  --m-metadata-file metadata.txt \
+  --m-metadata-column calf_diet \
+  --o-visualization 1yr-core-metrics-results-new/weighted-unifrac-calf_diet-significance.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix 1yr-core-metrics-results-new/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.txt \
+  --m-metadata-column calf_diet \
+  --o-visualization 1yr-core-metrics-results-new/bray-curtis-calf_diet-significance.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix 1yr-core-metrics-results-new/jaccard_distance_matrix.qza \
+  --m-metadata-file metadata.txt \
+  --m-metadata-column calf_diet \
+  --o-visualization 1yr-core-metrics-results-new/jaccard_diet-significance.qzv \
+  --p-pairwise
+
+# 2yr
+qiime feature-table filter-samples \
+  --i-table table_simple_220_160.qza \
+  --m-metadata-file metadata.txt \
+  --p-where "[Host_Age]='2yr'" \
+  --o-filtered-table 2yr-table.qza
+
+qiime diversity core-metrics-phylogenetic \
+--i-phylogeny rooted-tree_simple.qza \
+--i-table 2yr-table.qza \
+--p-sampling-depth 9500 \
+--m-metadata-file metadata.txt \
+--output-dir 2yr-core-metrics-results-new
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity 2yr-core-metrics-results-new/faith_pd_vector.qza \
+  --m-metadata-file metadata.txt \
+  --o-visualization 2yr-core-metrics-results-new/faith-pd-group-significance.qzv
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity 2yr-core-metrics-results-new/evenness_vector.qza \
+  --m-metadata-file metadata.txt \
+  --o-visualization 2yr-core-metrics-results-new/evenness-group-significance.qzv
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity 2yr-core-metrics-results-new/shannon_vector.qza \
+  --m-metadata-file metadata.txt \
+  --o-visualization 2yr-core-metrics-results-new/shannon-group-significance.qzv
+
+qiime diversity alpha-group-significance \
+  --i-alpha-diversity 2yr-core-metrics-results-new/observed_features_vector.qza \
+  --m-metadata-file metadata.txt \
+  --o-visualization 2yr-core-metrics-results-new/observed-features-significance.qzv
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix 2yr-core-metrics-results-new/unweighted_unifrac_distance_matrix.qza \
+  --m-metadata-file metadata.txt \
+  --m-metadata-column calf_diet \
+  --o-visualization 2yr-core-metrics-results-new/unweighted-unifrac-calf_diet-significance.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix 2yr-core-metrics-results-new/weighted_unifrac_distance_matrix.qza \
+  --m-metadata-file metadata.txt \
+  --m-metadata-column calf_diet \
+  --o-visualization 2yr-core-metrics-results-new/weighted-unifrac-calf_diet-significance.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix 2yr-core-metrics-results-new/bray_curtis_distance_matrix.qza \
+  --m-metadata-file metadata.txt \
+  --m-metadata-column calf_diet \
+  --o-visualization 2yr-core-metrics-results-new/bray-curtis-calf_diet-significance.qzv \
+  --p-pairwise
+
+qiime diversity beta-group-significance \
+  --i-distance-matrix 2yr-core-metrics-results-new/jaccard_distance_matrix.qza \
+  --m-metadata-file metadata.txt \
+  --m-metadata-column calf_diet \
+  --o-visualization 2yr-core-metrics-results-new/jaccard_diet-significance.qzv \
+  --p-pairwise
