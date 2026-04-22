@@ -1,0 +1,8 @@
+qiime feature-table summarize \
+  --i-table table_simple_220_160.qza \
+  --o-visualization table_simple_220_160.qzv \
+  --m-sample-metadata-file prewean_calf_metadata_simple.txt
+
+qiime feature-table tabulate-seqs \
+  --i-data rep-seqs_simple_220_160.qza \
+  --o-visualization rep-seqs_simple_220_160.qzv
