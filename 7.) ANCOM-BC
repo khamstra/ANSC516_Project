@@ -1,0 +1,154 @@
+qiime composition ancombc \
+  --i-table table_simple_220_160.qza \
+  --m-metadata-file metadata.txt \
+  --p-formula 'Host_Age + calf_diet' \
+  --o-differentials ancombc-age-diet.qza
+
+qiime composition da-barplot \
+  --i-data ancombc-age-diet.qza \
+  --p-significance-threshold 0.05 \
+  --o-visualization da-barplot-age-diet.qzv
+
+8 wks
+qiime composition ancombc \
+--i-table 8w-table.qza \
+--m-metadata-file metadata.txt \
+--p-formula 'calf_diet' \
+--o-differentials 8w-diet-ancombc.qza
+
+qiime composition da-barplot \
+--i-data 8w-diet-ancombc.qza \
+--p-significance-threshold 0.05 \
+--o-visualization 8w-diet-da-barplot.qzv
+
+1 yr
+qiime composition ancombc \
+--i-table 1yr-table.qza \
+--m-metadata-file metadata.txt \
+--p-formula 'calf_diet' \
+--o-differentials 1yr-diet-ancombc.qza
+
+qiime composition da-barplot \
+--i-data 1yr-diet-ancombc.qza \
+--p-significance-threshold 0.05 \
+--o-visualization 1yr-diet-da-barplot.qzv
+
+2 yr
+qiime composition ancombc \
+--i-table 2yr-table.qza \
+--m-metadata-file metadata.txt \
+--p-formula 'calf_diet' \
+--o-differentials 2yr-diet-ancombc.qza
+
+qiime composition da-barplot \
+--i-data 2yr-diet-ancombc.qza \
+--p-significance-threshold 0.05 \
+--o-visualization 2yr-diet-da-barplot.qzv
+
+qiime taxa collapse \
+--i-table 8w-table.qza \
+--i-taxonomy taxonomy.qza \
+--p-level 5 \
+--o-collapsed-table 8w-table-l5.qza
+
+qiime composition ancombc \
+--i-table 8w-table-l5.qza \
+--m-metadata-file metadata.txt \
+--p-formula 'calf_diet' \
+--o-differentials 8w-l5-diet-ancombc.qza
+
+qiime composition da-barplot \
+--i-data 8w-l5-diet-ancombc.qza \
+--p-significance-threshold 0.05 \
+--p-level-delimiter ';' \
+--o-visualization 8w-l5-diet-da-barplot.qzv
+
+qiime taxa collapse \
+--i-table 1yr-table.qza \
+--i-taxonomy taxonomy.qza \
+--p-level 5 \
+--o-collapsed-table 1yr-table-l5.qza
+
+qiime composition ancombc \
+--i-table 1yr-table-l5.qza \
+--m-metadata-file metadata.txt \
+--p-formula 'calf_diet' \
+--o-differentials 1yr-l5-diet-ancombc.qza
+
+qiime composition da-barplot \
+--i-data 1yr-l5-diet-ancombc.qza \
+--p-significance-threshold 0.05 \
+--p-level-delimiter ';' \
+--o-visualization 1yr-l5-diet-da-barplot.qzv
+
+qiime taxa collapse \
+--i-table 2yr-table.qza \
+--i-taxonomy taxonomy.qza \
+--p-level 5 \
+--o-collapsed-table 2yr-table-l5.qza
+
+qiime composition ancombc \
+--i-table 2yr-table-l5.qza \
+--m-metadata-file metadata.txt \
+--p-formula 'calf_diet' \
+--o-differentials 2yr-l5-diet-ancombc.qza
+
+qiime composition da-barplot \
+--i-data 2yr-l5-diet-ancombc.qza \
+--p-significance-threshold 0.05 \
+--p-level-delimiter ';' \
+--o-visualization 2yr-l5-diet-da-barplot.qzv
+
+qiime taxa collapse \
+--i-table 8w-table.qza \
+--i-taxonomy taxonomy.qza \
+--p-level 6 \
+--o-collapsed-table 8w-table-l6.qza
+
+qiime composition ancombc \
+--i-table 8w-table-l6.qza \
+--m-metadata-file metadata.txt \
+--p-formula 'calf_diet' \
+--o-differentials 8w-l6-diet-ancombc.qza
+
+qiime composition da-barplot \
+--i-data 8w-l6-diet-ancombc.qza \
+--p-significance-threshold 0.05 \
+--p-level-delimiter ';' \
+--o-visualization 8w-l6-diet-da-barplot.qzv
+
+qiime taxa collapse \
+--i-table 1yr-table.qza \
+--i-taxonomy taxonomy.qza \
+--p-level 6 \
+--o-collapsed-table 1yr-table-l6.qza
+
+qiime composition ancombc \
+--i-table 1yr-table-l6.qza \
+--m-metadata-file metadata.txt \
+--p-formula 'calf_diet' \
+--o-differentials 1yr-l6-diet-ancombc.qza
+
+qiime composition da-barplot \
+--i-data 1yr-l6-diet-ancombc.qza \
+--p-significance-threshold 0.05 \
+--p-level-delimiter ';' \
+--o-visualization 1yr-l6-diet-da-barplot.qzv
+
+qiime taxa collapse \
+--i-table 2yr-table.qza \
+--i-taxonomy taxonomy.qza \
+--p-level 6 \
+--o-collapsed-table 2yr-table-l6.qza
+
+qiime composition ancombc \
+--i-table 2yr-table-l6.qza \
+--m-metadata-file metadata.txt \
+--p-formula 'calf_diet' \
+--o-differentials 2yr-l6-diet-ancombc.qza
+
+qiime composition da-barplot \
+--i-data 2yr-l6-diet-ancombc.qza \
+--p-significance-threshold 0.05 \
+--p-level-delimiter ';' \
+--o-visualization 2yr-l6-diet-da-barplot.qzv
