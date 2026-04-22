@@ -1,0 +1,48 @@
+#!/bin/bash
+#SBATCH -A microbiome
+#SBATCH -p cpu
+#SBATCH -t 08:00:00
+#SBATCH -c 4
+#SBATCH --mem=32G
+#SBATCH -J taxonomy
+#SBATCH -o taxonomy.out
+#SBATCH -e taxonomy.err
+
+set -euo pipefail
+
+module load biocontainers
+module load qiime2
+
+qiime feature-classifier classify-sklearn \
+--i-classifier silva-138-99-nb-classifier.qza \
+--i-reads rep-seqs_simple_220_160.qza \
+--p-n-jobs ${SLURM_CPUS_PER_TASK} \
+--o-classification taxonomy.qza
+
+qiime taxa barplot \
+--i-table 8w-table.qza \
+--i-taxonomy taxonomy.qza \
+--m-metadata-file metadata.txt \
+--o-visualization 8w-taxa-barplot.qzv
+
+qiime taxa barplot \
+--i-table 1yr-table.qza \
+--i-taxonomy taxonomy.qza \
+--m-metadata-file metadata.txt \
+--o-visualization 1yr-taxa-barplot.qzv
+
+qiime taxa barplot \
+--i-table 2yr-table.qza \
+--i-taxonomy taxonomy.qza \
+--m-metadata-file prewean_calf_metadata_simple.txt \
+--o-visualization 2yr-taxa-barplot.qzv
+qiime composition ancombc \
+  --i-table gut-table.qza \
+  --m-metadata-file sample-metadata.tsv \
+  --p-formula 'subject' \
+  --o-differentials ancombc-subject.qza
+
+qiime composition da-barplot \
+  --i-data ancombc-subject.qza \
+  --p-significance-threshold 0.001 \
+  --o-visualization da-barplot-subject.qzv
